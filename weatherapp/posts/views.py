@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, HttpResponse
+from django.shortcuts import render, get_object_or_404
 from .models import Post
 
 
@@ -9,6 +9,6 @@ def posts_list(request):
 
 
 def post_page(request, slug):
-    # return HttpResponse(f"Slug: {slug}")
-    post = get_object_or_404(Post, slug=slug)
+    post = Post.objects.get(slug=slug)
+    # post = get_object_or_404(Post, slug=slug)
     return render(request, "posts/post_page.html", {"post": post})
