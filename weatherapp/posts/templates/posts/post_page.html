@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page</title>
-</head>
-<body>
+
     {% extends 'layout.html' %}
 
 {% block title %}
@@ -13,12 +6,16 @@
 {% endblock %}
 
 {% block content %}
-<article class="post">
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.date }}</p>
-    <p>{{ post.body }}</p>
-</article>
+    <section>
+        <img 
+        src="{{ post.banner.url }}"
+        alt="{{ post.title }}"
+        class= "banner"
+        />
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.date }}</p>
+        <br >
+        <p>{{ post.body }}</p>
+    </section>
 {% endblock %}
 
-</body>
-</html>
