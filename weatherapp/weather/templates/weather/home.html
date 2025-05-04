@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="loading" class="loader" style="display: none;"></div> <!-- Initially show loader -->
+<div class="search-form">
+<form method="POST">
+  {% csrf_token %}
+  <input type="text" name="city" placeholder="Enter city name" required>
+  <button type="submit">Get Weather</button>
+</form>
+</div>
+{% if error %}
+  <p style="color:red">{{ error }}</p>
+{% endif %}
+<div id="weatherContent" style="display: none;"> 
+  <!-- Weather content hidden initially -->
+    <!-- Weather data goes here -->
+</div>
+
+{% if city_name %}
+<div class="current-weather">
+  <h1>Weather in {{ city_name }}</h1>
+  <p>Current Temperature: {{ temp_current }}°F</p>
+    <img src="{{ current_icon_url}}" alt="{{ current_icon}}" />
+    <p>{{current_condition}}</p>
+{% endif %}
+</div>
+
+  {% if forecast_list %}
+  <h3>5 Day Forecast </h3>
+  
+  <div class="forecast-container">
+  {% for day in forecast_list %}
+  <div class="forecast-card">
+    <h4>{{day.forecast_day}}</h4>
+    <img src="{{ day.icon_url }}" class="forecast-icon"alt="{{ day.icon }}" alt="{{ day.condition}}" /> 
+    <h4 class="daily-temp">Min:{{day.min}} °F Max:{{day.max}} °F</h4>
+  </div>
+  {% endfor %}
+</div>
+
+  {% elif forecast_error %}
+    <p style="color:red">{{ forecast_error}}</p>
+  {% endif %}
+
+</div>
+{% endblock %}

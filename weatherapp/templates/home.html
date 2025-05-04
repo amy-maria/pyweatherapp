@@ -1,10 +1,22 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Home
+    Weather App
 {% endblock %}
 
 {% block content %}
-<h1>Home</h1>
-<p>Check out my <a href="/about">About</a> page.</p>      
+<section>
+    <form method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+        </form>
+
+    {% if error %}
+    <p style="color: red;">{{ error}} </p>
+
+   
+<section>
+</body>
+</html>   
 {% endblock %}
