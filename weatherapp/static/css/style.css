@@ -9,8 +9,80 @@ body {
     background-color: black;
 }
 .banner {
-    display: block;
+    display: flex;
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
 
+}
+.search-form {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+button {
+    background-color: blue;
+    border-radius: 4px;
+    color: whitesmoke;
+}
+h3 {
+    text-align: center;
+}
+.current-weather {
+    text-align: center;
+    margin-bottom: 20px;
+}
+img .current-weather {
+    height: 50px;
+    width: 50px;
+}
+.forecast-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin: 2rem auto ;
+    max-width: 1000px;   
+}
+/* styling for each card */
+.forecast-card {
+    background-color: whitesmoke;
+    border: 1px solid blue;
+    border-radius: 4px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 4px;
+
+}
+.forecast-card h4 {
+    color: red;
+}
+daily-temp {
+    color: red;
+    size: 1rem;
+    font-weight: bold;
+}
+img .icon {
+
+    width: 40px;
+    height: 40px;
+}
+.forecast-temp {
+    font-size: 1.5rem;
+    font-weight: bold ;
+}
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
