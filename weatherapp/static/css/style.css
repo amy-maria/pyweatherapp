@@ -2,30 +2,73 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 body {
     min-height: 100vh;
     color: whitesmoke;
-    background-color: black;
+    background-color: rgba(113,152,193,0.6);
+    background-image: url("../images/chapel-7956274_1280.jpg");
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding-bottom: 20px;
 }
-.banner {
+nav {
     display: flex;
-    width: 100%;
-    max-width: 1000px;
+    justify-content: flex-end;
+    background-color: rgba(113,152,193,0.6);
+    padding: 10px 20px;
+    width: 100vw;
 
+}
+nav ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin-right: 20px;
+    padding: 0;
+} 
+
+nav li a {
+
+    text-decoration: none;
+    height:40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:4px;
+    padding:10px;
+}
+button {
+    height:40px;
+    width: auto;
+    padding:10px;
+    background-color: blue;
+    border-radius: 4px;
+    text-align: center;
+    color: whitesmoke; 
+    margin: 10px;
+}
+h3 {
+    text-align: center;
+}
+footer {
+    font-size: large;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: blanchedalmond;
+    text-align: center;
 }
 .search-form {
     align-items: center;
     text-align: center;
+    margin-top: 30px;
     margin-bottom: 20px;
-}
-button {
-    background-color: blue;
-    border-radius: 4px;
-    color: whitesmoke;
-}
-h3 {
-    text-align: center;
 }
 .current-weather {
     text-align: center;
@@ -35,6 +78,12 @@ img .current-weather {
     height: 50px;
     width: 50px;
 }
+.error {
+    color: red;
+    font-size: large;
+    text-align: center;
+}
+
 .forecast-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -45,23 +94,21 @@ img .current-weather {
 /* styling for each card */
 .forecast-card {
     background-color: whitesmoke;
-    border: 1px solid blue;
-    border-radius: 4px;
+    opacity: .8;
+    border: 2px solid black;
+    border-radius: 10px;
     padding: 1rem;
     text-align: center;
-    box-shadow: 4px;
-
 }
 .forecast-card h4 {
     color: red;
 }
-daily-temp {
+.daily-temp {
     color: red;
     size: 1rem;
     font-weight: bold;
 }
 img .icon {
-
     width: 40px;
     height: 40px;
 }
@@ -71,7 +118,7 @@ img .icon {
 }
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
+    border-top: 16px solid #7198c1; /* Blue */
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -86,3 +133,51 @@ img .icon {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.user-login {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.about, .comments, .register, .login, .posts, .single-post, .new-post {
+    color:black;
+    background-color: rgba(113,152,193,0.6);
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 20px;
+    
+  
+  
+}
+.about h1, .comments h1, .register h1, .login h1 {
+    margin: 20px;
+    text-align: center;
+}
+.register button, .login button {
+    margin-top: 20px;
+    background-color: blue;
+}
+.post {
+    background-color:  rgba(113,152,193,0.6) ;
+    
+}
+/* Tablets: 3 cards per row */
+@media (max-width: 992px) {
+    .forecast-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Small tablets & phones: 2 cards per row */
+  @media (max-width: 768px) {
+    .forecast-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  /* Small phones: 1 card per row */
+  @media (max-width: 480px) {
+    .forecast-container {
+      grid-template-columns: 1fr;
+    }
+  }
+  
