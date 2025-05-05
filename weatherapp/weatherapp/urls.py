@@ -34,7 +34,8 @@ urlpatterns = [
     path("posts/", include("posts.urls")),
     path("users/", include("users.urls")),
     path("weather/", include("weather.urls")),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 if settings.DEBUG:
     urlpatterns += static(
         settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0]

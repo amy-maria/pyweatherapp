@@ -6,9 +6,9 @@
 {% endblock %}
 
 {% block content %}
-    <section>
+    <section class="login">
        
-        <h1>Login</h1>
+        <h1>Login to Account</h1>
         <form class="form-validation" action="{% url 'users:login' %}" method="post">
             {% csrf_token %}
             {{ form }}

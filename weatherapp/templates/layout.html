@@ -16,23 +16,26 @@
 </head>
 <body>
     <nav>
-        <a href="/"><span title="Home" role='img' aria-label="Home">🏠</span></a>
-        <a href="/about"><span title="About" role='img' aria-label="About">💡</span></a>
-        <a href="{% url 'posts:list' %}"><span title="Posts" role="img" aria-label="posts">📰</span></a>
+        <ul>
+        <li><a href="/"><span title="Home" role='img' aria-label="Home">🏠</span></a></li>
+        <li><a href="/about"><span title="About" role='img' aria-label="About">💡</span></a></li>
+        <li><a href="{% url 'posts:list' %}"><span title="Comments" role="img" aria-label="comments">📰</span></a></li>
         |
         {% if user.is_authenticated %}
-            <a href="{% url 'posts:new-post' %}"><span title="New Post" role="img" aria-label="New Post">🆕</span></a>
+            <li><a href="{% url 'posts:new-post' %}"><span title="New Comments" role="img" aria-label="New Comments">🆕</span></a></li>
         
             <form class="logout" action="{% url 'users:logout' %}" method="post">
             {% csrf_token %}
-            <button class="logout-button" aria-label="logout" title="logout">Logout</button>
+            <li><button class="logout-button" aria-label="logout" title="logout">Logout</button></li>
             </form>
 
         {% else %}
-            <a href="{% url 'users:register' %}"><span title="User Account" role="img" aria-label="User Account">👤</span></a>
+            <li><a href="{% url 'users:register' %}"><span title="User Account" role="img" aria-label="User Account">👤</span></a></li>
             
-            <a href="{% url 'users:login' %}"><button><span title="User Login" role="img" aria-label="User Login">Login</span></button></a>
+            <li><a href="{% url 'users:login' %}"><button class="login-button" title="User Login" role="img" aria-label="User Login"
+            >Login</button></a></li>
         {% endif %}
+            </ul>
     </nav>
     <main>
        
@@ -40,6 +43,8 @@
 
         {% endblock %}
     </main>
-   
 </body>
+   <footer><h6>Created by Amy Rowell</h6></footer>
+   
+
 </html>
