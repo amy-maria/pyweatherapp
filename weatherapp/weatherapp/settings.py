@@ -141,7 +141,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 import dj_database_url
 
 DEBUG = False
-ALLOWED_HOSTS = ["your-heroku-app-name.herokuapp.com"]
+ALLOWED_HOSTS = ["stark-shore-03855.herokuapp.com"]
 
 DATABASES["default"] = dj_database_url.config(conn_max_age=600)
 
