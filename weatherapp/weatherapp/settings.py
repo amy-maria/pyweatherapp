@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "weatherapp.posts",
     "weatherapp.users",
+    "weatherapp.weather",
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,7 @@ ROOT_URLCONF = "weatherapp.weatherapp.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "weatherapp" / "templates"],
+        "DIRS": [BASE_DIR / "weatherapp" / "weather" / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
