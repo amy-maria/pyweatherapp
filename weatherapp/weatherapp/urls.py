@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 from django.conf import settings
-from weather.viuews import home
+from weather.views import home
 
 # import your view
 
