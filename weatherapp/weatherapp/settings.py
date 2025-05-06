@@ -90,8 +90,9 @@ DATABASES = {
     }
 }
 import dj_database_url
+import os
 
-DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES["default"] = dj_database_url.config(default='sqlite:///db.sqlite3')
 
 
 # Password validation
@@ -132,7 +133,6 @@ STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 STATIC_ROOT = os.path.join(BASE_DIR / "staticfiles")
 # MEDIA_ROOT = BASE_DIR / "media"
-
 STATICFILES_DIRS = [
     BASE_DIR / "weatherapp" / "static",
 ]
@@ -145,9 +145,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 import dj_database_url
 
 DEBUG = False
-ALLOWED_HOSTS = ["stark-shore-03855.herokuapp.com"]
+ALLOWED_HOSTS = ALLOWED_HOSTS = ['stark-shore-03855-ff6acd8944a2.herokuapp.com', '127.0.0.1', 'localhost']
+
 
 DATABASES["default"] = dj_database_url.config(conn_max_age=600)
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
+MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddl"eware")
