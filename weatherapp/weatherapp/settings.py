@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "weatherapp.posts",
     "weatherapp.users",
-  
+]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
