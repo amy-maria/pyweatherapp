@@ -92,7 +92,7 @@ DATABASES = {
 import dj_database_url
 import os
 
-DATABASES["default"] = dj_database_url.config(default='sqlite:///db.sqlite3')
+DATABASES["default"] = dj_database_url.config(default="sqlite:///db.sqlite3")
 
 
 # Password validation
@@ -145,10 +145,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 import dj_database_url
 
 DEBUG = False
-ALLOWED_HOSTS = ALLOWED_HOSTS = ['stark-shore-03855-ff6acd8944a2.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ALLOWED_HOSTS = [
+    "stark-shore-03855-ff6acd8944a2.herokuapp.com",
+    "127.0.0.1",
+    "localhost",
+]
 
 
 DATABASES["default"] = dj_database_url.config(conn_max_age=600)
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddl"eware")
+MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
