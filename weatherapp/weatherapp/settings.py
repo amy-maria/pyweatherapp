@@ -57,7 +57,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
-ROOT_URLCONF = "weatherapp.urls"
+ROOT_URLCONF = "weatherapp.weatherapp.urls"
 
 TEMPLATES = [
     {
