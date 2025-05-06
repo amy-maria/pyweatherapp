@@ -1,1 +1,2 @@
-web: gunicorn stark-shore-03855.wsgi
+web: gunicorn weatherapp.wsgi
+
