@@ -19,7 +19,8 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 from django.conf import settings
-from weather.views import home  # import your view
+
+# import your view
 
 # from django.views.static import serve
 from django.conf.urls.static import static
