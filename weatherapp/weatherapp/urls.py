@@ -29,10 +29,10 @@ urlpatterns = [
     # re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
     path("admin/", admin.site.urls),
     # path("", views.homepage),
-    path("", include("weatherapp/weather.urls")),
+    path("", include("weatherapp.weather.urls")),
     path("about/", views.about),
-    path("posts/", include("weatherapp/posts.urls")),
-    path("users/", include("weatherapp/users.urls")),
+    path("posts/", include("weatherapp.posts.urls")),
+    path("users/", include("weatherapp.users.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
