@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "weatherapp.posts",
-    "weatherapp.users",
+    "posts",
+    "users",
     "weatherapp.weather",
 ]
 
