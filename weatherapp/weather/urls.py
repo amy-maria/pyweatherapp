@@ -1,6 +1,6 @@
 from django.urls import path
-from weather.views import home
+from weatherapp.weather.views import home
 
 urlpatterns = [
-    path("", views.home, name="home"),
+    path("", home, name="home"),
 ]

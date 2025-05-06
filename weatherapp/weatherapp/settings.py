@@ -28,7 +28,11 @@ FORECAST_URL = config("FORECAST_URL")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "stark-shore-03855-ff6acd8944a2.herokuapp.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
@@ -126,7 +130,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR / "staticfiles")
 # MEDIA_ROOT = BASE_DIR / "media"
 
 STATICFILES_DIRS = [
