@@ -20,7 +20,8 @@ from django.urls import path, include
 
 from django.conf import settings
 from .. import views
-from weatherapp.weather.views import home
+
+# from weatherapp.weather.views import home
 
 # import your view
 
