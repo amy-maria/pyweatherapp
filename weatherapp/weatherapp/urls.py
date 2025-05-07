@@ -17,9 +17,8 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-
-from django.conf import settings
-from weather import views
+from weather.views import home
+from . import views
 
 # from weatherapp.weather.views import home
 
@@ -34,7 +33,7 @@ urlpatterns = [
     # re_path(r"^static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
     path("admin/", admin.site.urls),
     # path("", views.homepage),
-    path("", views.home, name="home"),
+    path("", home, name="home"),
     path("about/", views.about, name="about"),
     path("posts/", include("weatherapp.posts.urls")),
     path("users/", include("weatherapp.users.urls")),
