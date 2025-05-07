@@ -1,2 +1,2 @@
-web: gunicorn weatherapp.wsgi
+web: gunicorn weatherapp.weatherapp.wsgi
 

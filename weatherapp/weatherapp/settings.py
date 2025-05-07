@@ -132,7 +132,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
 STATIC_ROOT = os.path.join(BASE_DIR / "weatherapp" / "staticfiles")
-# MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = os.path.join(BASE_DIR / "weatherapp" / "media")
 STATICFILES_DIRS = [
     BASE_DIR / "weatherapp" / "static",
 ]
