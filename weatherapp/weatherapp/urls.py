@@ -35,7 +35,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # path("", views.homepage),
     path("", views.home, name="home"),
-    path("about/", views.about name="about") ,
+    path("about/", views.about, name="about"),
     path("posts/", include("weatherapp.posts.urls")),
     path("users/", include("weatherapp.users.urls")),
     path("weather/", include("weatherapp.weather.urls")),
