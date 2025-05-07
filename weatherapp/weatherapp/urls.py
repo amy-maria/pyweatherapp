@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.conf import settings
-from weatherapp import views
+from .. import views
 
 # from weatherapp.weather.views import home
 
@@ -35,7 +35,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     # path("", views.homepage),
     path("", views.home, name="home"),
-    path("about/", views.about),
+    path("about/", views.about name="about") ,
     path("posts/", include("weatherapp.posts.urls")),
     path("users/", include("weatherapp.users.urls")),
     path("weather/", include("weatherapp.weather.urls")),
