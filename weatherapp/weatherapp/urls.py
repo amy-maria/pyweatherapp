@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from weather.views import home
+from weatherapp.weather.views import home
 from . import views
 
 # from weatherapp.weather.views import home
