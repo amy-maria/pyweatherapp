@@ -8,7 +8,7 @@ body {
     min-height: 100vh;
     color: whitesmoke;
     background-color: rgba(113,152,193,0.6);
-    background-image: url("../../staticfiles/images/chapel-7956274_1280.jpg");
+    background-image: url("../images/chapel-7956274_1280.jpg");
     
     background-size: cover;
     background-repeat: no-repeat;
