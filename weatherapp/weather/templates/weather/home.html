@@ -10,7 +10,7 @@
 </form>
 </div>
 {% if error %}
-  <p style="color:red">{{ error }}</p>
+  <p class "error" style="color:red">{{ error }}</p>
 {% endif %}
 <div id="weatherContent" style="display: none;"> 
   <!-- Weather content hidden initially -->
@@ -40,7 +40,7 @@
 </div>
 
   {% elif forecast_error %}
-    <p style="color:red">{{ forecast_error}}</p>
+    <p class="error "style="color:red">{{ forecast_error}}</p>
   {% endif %}
 
 </div>

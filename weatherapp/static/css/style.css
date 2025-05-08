@@ -82,6 +82,7 @@ img .current-weather {
     color: red;
     font-size: large;
     text-align: center;
+    margin-left: 30px;
 }
 
 .forecast-container {

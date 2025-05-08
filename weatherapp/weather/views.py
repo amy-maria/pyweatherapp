@@ -77,7 +77,7 @@ def home(request):
                         context["forecast_list"] = forecast_list
                         print(forecast_list)
             except KeyError:
-                context["forecast_error"] = "Could not parse content."
+                context["forecast_error"] = "Unable to provide forecast. "
         else:
             context["error"] = "Failed to retrieve data."
     return render(request, "weather/home.html", context)
