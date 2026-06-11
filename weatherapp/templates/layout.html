@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  
+    <script src="{% static 'js/main.js' %}" defer></script>
+   
+    <title>
+        {% block title %}
+        Weather App
+        {% endblock %}
+
+    </title>
+</head>
+<body>
+    <nav>
+        <ul>
+        <li><a href="/"><span title="Home" role='img' aria-label="Home">🏠</span></a></li>
+        <li><a href="/about"><span title="About" role='img' aria-label="About">💡</span></a></li>
+        <li><a href="{% url 'posts:list' %}"><span title="Comments" role="img" aria-label="comments">📰</span></a></li>
+        |
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'posts:new-post' %}"><span title="New Comments" role="img" aria-label="New Comments">🆕</span></a></li>
+        
+            <form class="logout" action="{% url 'users:logout' %}" method="post">
+            {% csrf_token %}
+            <li><button class="logout-button" aria-label="logout" title="logout">Logout</button></li>
+            </form>
+
+        {% else %}
+            <li><a href="{% url 'users:register' %}"><span title="User Account" role="img" aria-label="User Account">👤</span></a></li>
+            
+            <li><a href="{% url 'users:login' %}"><button class="login-button" title="User Login" role="img" aria-label="User Login"
+            >Login</button></a></li>
+        {% endif %}
+            </ul>
+    </nav>
+    <main>
+       
+        {% block content %}
+
+        {% endblock %}
+    </main>
+</body>
+   <footer><h6>Created by Amy Rowell</h6></footer>
+   
+
+</html>

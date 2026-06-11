@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Weather App
+{% endblock %}
+
+{% block content %}
+<section>
+    <form method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+        </form>
+
+   
+   
+<section>
+</body>
+
+</html>   
+{% endblock %}
