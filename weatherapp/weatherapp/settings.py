@@ -34,7 +34,6 @@ DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = [
     "pyweatherapp-1.onrender.com",
-    ".onrender.com",
     "localhost",
     "127.0.0.1",
 ]
