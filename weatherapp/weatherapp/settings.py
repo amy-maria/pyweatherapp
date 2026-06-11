@@ -116,7 +116,7 @@ else:
     DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = [
-    "stark-shore-03855-ff6acd8944a2.herokuapp.com",
+    "pyweatherapp-1.onrender.com",
     "127.0.0.1",
     "localhost",
     ".render.com"  # Added to ensure your Render deployments handle requests cleanly
