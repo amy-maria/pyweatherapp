@@ -1,6 +1,6 @@
 .env
-<<<<<<< HEAD
-=======
 .venv
 staticfiles
->>>>>>> 590ca50f29b67b69053baf3bd4238bf715a357eb
+db.sqlite3
+__pycache__/
+*.pyc
