@@ -36,9 +36,9 @@ urlpatterns = [
     # path("", views.homepage),
     path("", home, name="home"),
     path("about/", views.about, name="about"),
-    path("posts/", include("posts.urls")),
-    path("users/", include("users.urls")),
-    path("weather/", include("weather.urls")),
+    path("posts/", include("weatherapp.posts.urls")),
+    path("users/", include("weatherapp.users.urls")),
+    path("weather/", include("weatherapp.weather.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
