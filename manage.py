@@ -2,12 +2,17 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from pathlib import Path
+
+# This automatically adds your inner subfolders to the Python search path
+sys.path.append(str(Path(__file__).resolve().parent))
+sys.path.append(str(Path(__file__).resolve().parent / "weatherapp"))
 
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE",
-                          "weatherapp.weatherapp.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "weatherapp.settings")
+    # ... leave the rest of your main function exactly as it is ...
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
