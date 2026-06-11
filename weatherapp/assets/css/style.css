@@ -1,0 +1,17 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    color: whitesmoke;
+    background-color: black;
+    background-image: url(/weatherapp/media/chapel-7956274_1280.jpg)
+}
+.banner {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+
+}
