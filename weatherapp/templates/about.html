@@ -7,11 +7,23 @@
 {% block content %}
 
 <section class="about">
-<h1>About Weather App</h1>
-<p>I created this Weather App after completing a Python course with <a href="https://www.shecodes.io/" alt="linked to SheCodes" >SheCodes</a>. The weather app was a requirement to complete the class, however, it was only available in the terminal. I wanted to show the evolution of the weather apps I've worked on; from JavaScript to React and now Python with Django.</p>   
-<br />
-<p>Please check out my <a href="https://amyrowell.dev" alt="link to portfolio page" target="_blank">developer portfolio</a> page or my <a href="https://github.com/amy-maria?tab=repositories" alt="Link to GitHub account" target="_blank">GitHub</a> account for additional projects.</p>
-</section>    
+<h1>Project Evolution</h1>
+<p> This Weather Application showcases the intentional evolution of a concept across different technology stacks. 
+
+By migrating this project from a basic Command Line Interface (CLI) to a full-stack framework, I wanted to visually and structurally demonstrate my adaptability across ecosystems.</p>
+
+<h2>Core Architecture & Technical Milestones</h2>
+<p>To improve this project from a classroom requirement to a production-ready application, I implemented several advanced practices:
+<li>Dynamic API Integration: Asynchronous data-fetching layer to digest and map live, multi-day forecast payloads from third-party weather services.</li>
+
+<li>Secure User Authentication: Utilized Django’s built-in authentication system to securely process user registrations, manage encrypted database sessions, and handle restricted routing.</li>
+
+<li>Dual-Environment Database Strategy: Configured a dynamic database architecture that uses a lightweight local SQLite database for rapid development, which seamlessly bridges to a centralized SQL cluster upon cloud deployment.</li>
+
+<li>Environment Security: Secured sensitive API tokens and credentials using decoupled environment variables (.env) to ensure repository safety and compliance with modern DevOps standards.</li>
+</ul>
+</p>
+
 
 {% endblock %}
 

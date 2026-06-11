@@ -32,8 +32,6 @@ FORECAST_URL = config("FORECAST_URL")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -44,9 +42,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "weatherapp.posts",
-    "weatherapp.users",
-    "weatherapp.weather",
+    "posts",
+    "users",
+    "weather",
 ]
 
 MIDDLEWARE = [
@@ -60,7 +58,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "weatherapp.weatherapp.urls"
+ROOT_URLCONF = "weatherapp.urls"
 
 TEMPLATES = [
     {
@@ -90,72 +88,54 @@ WSGI_APPLICATION = "weatherapp.wsgi.application"
 # }
 # }
 
-DATABASES = {"default": dj_database_url.config(
-    default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
-    conn_max_age=600
-)}
+# ==============================================================================
+# DATABASE CONFIGURATION
+# ==============================================================================
+# 1. Start with a local SQLite database configuration by default
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
 
-# Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
+# 2. Overwrite with PostgreSQL ONLY if DATABASE_URL exists (like on Render)
+if os.environ.get("DATABASE_URL"):
+    import dj_database_url
+    DATABASES["default"] = dj_database_url.config(
+        conn_max_age=600, ssl_require=True)
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+
+# ==============================================================================
+# SECURITY & ENVIRONMENT OVERRIDES
+# ==============================================================================
+# If running locally, make sure DEBUG is True so you can build and test safely
+if not os.environ.get("DATABASE_URL"):
+    DEBUG = True
+else:
+    DEBUG = config("DEBUG", default=False, cast=bool)
+
+ALLOWED_HOSTS = [
+    "stark-shore-03855-ff6acd8944a2.herokuapp.com",
+    "127.0.0.1",
+    "localhost",
+    ".render.com"  # Added to ensure your Render deployments handle requests cleanly
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
-
-LANGUAGE_CODE = "en-us"
-
-TIME_ZONE = "UTC"
-
-USE_I18N = True
-
-USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-
+# ==============================================================================
+# STATIC FILES CONFIGURATION
+# ==============================================================================
 STATIC_URL = "/static/"
 MEDIA_URL = "/media/"
-STATIC_ROOT = os.path.join(BASE_DIR / "staticfiles")
-MEDIA_ROOT = os.path.join(BASE_DIR / "media")
+STATIC_ROOT = BASE_DIR / "staticfiles"
+MEDIA_ROOT = BASE_DIR / "media"
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-# Tell WhiteNoise to compress and aggressively cache static assets for speed
+# Tell WhiteNoise to compress static assets
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-
-DEBUG = False
-ALLOWED_HOSTS = ALLOWED_HOSTS = [
-    "stark-shore-03855-ff6acd8944a2.herokuapp.com",
-    "127.0.0.1",
-    "localhost",
-]
-
-
-DATABASES["default"] = dj_database_url.config(conn_max_age=600)
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")

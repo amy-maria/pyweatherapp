@@ -28,7 +28,8 @@ def home(request):
             # print(city_weather)
 
             context["city_name"] = city_weather["city"]
-            context["temp_current"] = round(city_weather["temperature"]["current"])
+            context["temp_current"] = round(
+                city_weather["temperature"]["current"])
             context["current_condition"] = city_weather["condition"][
                 "description"
             ].title()

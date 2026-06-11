@@ -52,7 +52,7 @@ button {
     color: whitesmoke; 
     margin: 10px;
 }
-h3 {
+h1,h2,h3 {
     text-align: center;
 }
 footer {
@@ -141,7 +141,7 @@ img .icon {
 }
 .about, .comments, .register, .login, .posts, .single-post, .new-post {
     color:black;
-    background-color: rgba(113,152,193,0.6);
+    background-color: rgba(113,152,193,0.4);
     margin-left: 30px;
     margin-right: 30px;
     margin-top: 80px;
