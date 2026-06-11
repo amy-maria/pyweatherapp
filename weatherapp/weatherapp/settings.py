@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "weatherapp.posts",
     "weatherapp.users",
-    "weatherapp.weather", ,
+    "weatherapp.weather",
 ]
 
 MIDDLEWARE = [
