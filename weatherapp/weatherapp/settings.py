@@ -94,10 +94,7 @@ WSGI_APPLICATION = "weatherapp.wsgi.application"
 # ==============================================================================
 # 1. Start with a local SQLite database configuration by default
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
 
 # 2. Overwrite with PostgreSQL ONLY if DATABASE_URL exists (like on Render)
