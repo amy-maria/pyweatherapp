@@ -42,9 +42,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "posts",
-    "users",
-    "weather",
+    "weatherapp.posts",
+    "weatherapp.users",
+    "weatherapp.weather",
 ]
 
 MIDDLEWARE = [
@@ -113,12 +113,12 @@ if os.environ.get("DATABASE_URL"):
 if not os.environ.get("DATABASE_URL"):
     DEBUG = True
 else:
-    DEBUG = config("DEBUG", default=False, cast=bool)
+    DEBUG = False
 
 ALLOWED_HOSTS = [
-    "pyweatherapp-1.onrender.com",
     "127.0.0.1",
     "localhost",
+    "pyweatherapp-1.onrender.com",
     ".render.com"  # Added to ensure your Render deployments handle requests cleanly
 ]
 
