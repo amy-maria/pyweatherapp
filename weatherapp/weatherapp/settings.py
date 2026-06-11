@@ -10,9 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
 from decouple import config
 import os
+import dj_dataase_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,15 +24,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-+my)ezlu$^jps8(a=r8(4j4^^ca&4$oy-lb-3hg(0q(qz1^i!z"
+SECRET_KEY = config("DJANGO_SECRET_KEY",
+                    default="django-insecure-fallback-development-key")
 API_KEY = config("API_KEY")
 API_URL = config("API_URL")
 FORECAST_URL = config("FORECAST_URL")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config("DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = [
-    "stark-shore-03855-ff6acd8944a2.herokuapp.com",
+    ".onrender.com",
     "localhost",
     "127.0.0.1",
 ]
@@ -90,10 +93,11 @@ WSGI_APPLICATION = "weatherapp.wsgi.application"
 #    "NAME": BASE_DIR / "db.sqlite3",
 # }
 # }
-import dj_database_url
-import os
 
-DATABASES = {"default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))}
+DATABASES = {"default": dj_database_url.config(
+    default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+    conn_max_age=600
+)}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -136,13 +140,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR / "media")
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+# Tell WhiteNoise to compress and aggressively cache static assets for speed
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-import dj_database_url
 
 DEBUG = False
 ALLOWED_HOSTS = ALLOWED_HOSTS = [
