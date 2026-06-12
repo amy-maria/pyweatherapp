@@ -36,7 +36,12 @@ def home(request):
             context["current_icon_url"] = city_weather["condition"]["icon_url"]
             context["current_icon"] = city_weather["condition"]["icon"]
 
-        except KeyError:
+        except KeyError as e:
+            # This logs the actual structure to the console when it drops to the fallback
+            print("--- WEATHER API ERROR TRACE ---")
+            print(f"Missing key: {e}")
+            print(f"Raw API Response: {weather.json()}")
+            print("--------------------------------")
             context["error"] = "Invalid city name. Please try again."
 
         # forecast weather
@@ -77,8 +82,13 @@ def home(request):
                         # for timestamp in city_forecast:
                         context["forecast_list"] = forecast_list
                         print(forecast_list)
-            except KeyError:
-                context["forecast_error"] = "Unable to provide forecast. "
+            except KeyError as e:
+                # This logs the actual structure to the console when it drops to the fallback
+                print("--- WEATHER API ERROR TRACE ---")
+                print(f"Missing key: {e}")
+                print(f"Raw API Response: {forecast.json()}")
+                print("--------------------------------")
+                context["error"] = "Invalid city name. Please try again."
         else:
             context["error"] = "Failed to retrieve data."
     return render(request, "weather/home.html", context)
