@@ -43,9 +43,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "weatherapp.posts",  # <--- Change this to use the full folder path
-    "weatherapp.users",  # <--- Do the same for users if it lives in the same folder
-    "weatherapp.weather",  # <--- And for weather if it's nested there too
+    "posts",      # <-- Clear name
+    "users",      # <-- Clear name
+    "weather",
 ]
 
 MIDDLEWARE = [
