@@ -16,9 +16,9 @@ def home(request):
     api_key = settings.API_KEY
     api_url = settings.API_URL
     forecast_api_url = settings.FORECAST_URL
-    url = f"{api_url}?query={city}&key={api_key}&units=imperial"
+    url = f"{api_url}query={city}&key={api_key}&units=imperial"
     weather = requests.get(url)
-    forecast_url = f"{forecast_api_url}?query={city}&key={api_key}&units=imperial"
+    forecast_url = f"{forecast_api_url}query={city}&key={api_key}&units=imperial"
 
     forecast = requests.get(forecast_url)
 
