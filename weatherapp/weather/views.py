@@ -11,7 +11,7 @@ def home(request):
         city = request.POST.get("city")
     else:
         # default city for initial page load
-        city = "New York"
+        city = "Miami"
 
     api_key = settings.API_KEY
     api_url = settings.API_URL
