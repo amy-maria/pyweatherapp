@@ -6,6 +6,7 @@ from pathlib import Path
 
 # This automatically adds your inner subfolders to the Python search path
 sys.path.append(str(Path(__file__).resolve().parent))
+sys.path.append(str(Path(__file__).resolve().parent / "weatherapp"))
 
 
 def main():
