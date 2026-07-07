@@ -1,6 +1,6 @@
 
 document.getElementById('weatherForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent form submission
+    // Prevent form submission
 
     // Show the loader
     document.getElementById('loading').style.display = 'block';
