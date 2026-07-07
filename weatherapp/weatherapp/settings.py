@@ -43,9 +43,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "storages",
     "posts",      # <-- Clear name
     "users",      # <-- Clear name
     "weather",
+    
 ]
 
 MIDDLEWARE = [
@@ -97,12 +99,24 @@ DATABASES = {
 # Overwrite with explicit Supabase production details if running on Render
 if os.environ.get('DATABASE_URL'):
     DATABASES['default'].update({
-        'USER': 'postgres.fkmleeighpdoojadoofh',
-        'PASSWORD': 'REDACTED',
-        'HOST': 'aws-1-us-west-2.pooler.supabase.com',
-        'PORT': '6543',
-        'NAME': 'postgres',
-    })
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
+        'NAME': config('DB_NAME'),
+    }) 
+        
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage',
+    AWS_ACCESS_KEY_ID = config('SUPABASE_S3_ACCESS_KEY')
+    AWS_SECRET_ACCESS_KEY = config('SUPABASE_S3_SECRET_KEY')
+    AWS_STORAGE_BUCKET_NAME = config('SUPABASE_S3_BUCKET')
+    AWS_S3_ENDPOINT_URL = config('SUPABASE_S3_ENDPOINT')
+    AWS_S3_REGION_NAME = config('SUPABASE_S3_REGION')
+    AWS_S3_ADDRESSING_STYLE = 'path'
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_QUERYSTRING_AUTH = False
+        
+    
 # 2. Overwrite with PostgreSQL ONLY if DATABASE_URL exists (like on Render)
 # if os.environ.get("DATABASE_URL"):
 # import dj_database_url
@@ -122,8 +136,8 @@ else:
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "pyweatherapp-1.onrender.com",
-    ".render.com"  # Added to ensure your Render deployments handle requests cleanly
+    ".vercel.app",
+    
 ]
 
 # ==============================================================================
