@@ -129,7 +129,7 @@ if os.environ.get('DATABASE_URL'):
 # ==============================================================================
 # If running locally, make sure DEBUG is True so you can build and test safely
 if not os.environ.get("DATABASE_URL"):
-    DEBUG = True
+    DEBUG = False
 else:
     DEBUG = False
 
