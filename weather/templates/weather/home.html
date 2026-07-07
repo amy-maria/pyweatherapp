@@ -3,7 +3,7 @@
 {% block content %}
 <div id="loading" class="loader" style="display: none;"></div> <!-- Initially show loader -->
 <div class="search-form">
-<form method="POST">
+<form method="POST" id="weatherForm">
   {% csrf_token %}
   <input type="text" name="city" placeholder="Enter city name" required>
   <button type="submit">Get Weather</button>
