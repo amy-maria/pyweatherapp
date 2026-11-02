@@ -14,8 +14,7 @@ import dj_database_url
 from pathlib import Path
 from decouple import config
 import os
-import sys
-import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config("DJANGO_SECRET_KEY",
-                    default="django-insecure-fallback-development-key")
+SECRET_KEY = config("DJANGO_SECRET_KEY")
 API_KEY = config("API_KEY")
 API_URL = config("API_URL")
 FORECAST_URL = config("FORECAST_URL")
@@ -141,10 +139,6 @@ else:
 # SECURITY & ENVIRONMENT OVERRIDES
 # ==============================================================================
 # If running locally, make sure DEBUG is True so you can build and test safely
-if not os.environ.get("DATABASE_URL"):
-    DEBUG = True
-else:
-    DEBUG = False
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
