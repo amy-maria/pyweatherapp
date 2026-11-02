@@ -59,6 +59,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "weatherapp.middleware.DatabaseUnavailableMiddleware",
 ]
 
 ROOT_URLCONF = "weatherapp.urls"
@@ -89,22 +90,27 @@ WSGI_APPLICATION = "weatherapp.wsgi.application"
 # DATABASE CONFIGURATION
 # ==============================================================================
 # 1. Start with a local SQLite database configuration by default
-DATABASES = {
-    'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
-        conn_max_age=600,
-        ssl_require=True
-    )
-}
+DATABASE_URL = config("DATABASE_URL", default="")
+
+if DATABASE_URL:
+    #Production Vercel; Supabase postgres, encrypted connection, fail fast
+    DATABASES = {
+        'default': dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=True
+        )
+    }
 # Overwrite with explicit Supabase production details if running on Render
-if os.environ.get('DATABASE_URL'):
+
     DATABASES['default'].update({
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
         'PORT': config('DB_PORT'),
         'NAME': config('DB_NAME'),
-    }) 
+    }),
+    DATABASES['default'].setdefault('OPTIONS', {})['connect_timeout'] = 5
         
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage',
     AWS_ACCESS_KEY_ID = config('SUPABASE_S3_ACCESS_KEY')
@@ -115,7 +121,14 @@ if os.environ.get('DATABASE_URL'):
     AWS_S3_ADDRESSING_STYLE = 'path'
     AWS_DEFAULT_ACL = 'public-read'
     AWS_QUERYSTRING_AUTH = False
-        
+else:
+    #local dev, SQLite file, no SSL
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
     
 # 2. Overwrite with PostgreSQL ONLY if DATABASE_URL exists (like on Render)
 # if os.environ.get("DATABASE_URL"):
@@ -129,7 +142,7 @@ if os.environ.get('DATABASE_URL'):
 # ==============================================================================
 # If running locally, make sure DEBUG is True so you can build and test safely
 if not os.environ.get("DATABASE_URL"):
-    DEBUG = False
+    DEBUG = True
 else:
     DEBUG = False
 
